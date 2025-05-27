@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body, #root {
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Para que los hijos respeten el tamaño */
+    flex-direction: column;
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120,119,198,0.3), rgba(255,255,255,0));
+    background-color: #161616;
+    color: white;
+}
