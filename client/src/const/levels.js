@@ -43,11 +43,11 @@ export const levels = [
       { id: 3, question: "¿Cómo accedes al primer elemento de un array?", options: ["arr[0]", "arr[1]", "arr.first()"], correctAnswer: "arr[0]" },
       { id: 4, question: "¿Qué es un objeto en JavaScript?", options: ["Una estructura de datos que almacena pares clave-valor", "Un tipo de variable numérica", "Una función especial"], correctAnswer: "Una estructura de datos que almacena pares clave-valor" },
       { id: 5, question: "¿Cómo accedes al valor de una propiedad en un objeto?", options: ["objeto.propiedad", "objeto[propiedad]", "Ambos son correctos"], correctAnswer: "Ambos son correctos" },
-      { id: 6, question: "¿Qué método elimina el último elemento de un array?", options: ["pop()", "shift()", "splice()", "unshift()"], correctAnswer: "pop()" },
-      { id: 7, question: "¿Cómo se verifica si un array incluye un elemento específico?", options: ["includes()", "indexOf()", "find()", "filter()"], correctAnswer: "includes()" },
-      { id: 8, question: "¿Qué método devuelve un nuevo array con los elementos que cumplen una condición?", options: ["filter()", "map()", "reduce()", "forEach()"], correctAnswer: "filter()" },
-      { id: 9, question: "¿Cómo se accede a todas las claves de un objeto?", options: ["Object.keys()", "Object.values()", "Object.entries()", "Object.getKeys()"], correctAnswer: "Object.keys()" },
-      { id: 10, question: "¿Qué método combina dos arrays en uno solo?", options: ["concat()", "join()", "push()", "merge()"], correctAnswer: "concat()" },
+      { id: 6, question: "¿Qué método elimina el último elemento de un array?", options: ["pop()", "shift()", "splice()"], correctAnswer: "pop()" },
+      { id: 7, question: "¿Cómo se verifica si un array incluye un elemento específico?", options: ["includes()", "indexOf()", "find()"], correctAnswer: "includes()" },
+      { id: 8, question: "¿Qué método devuelve un nuevo array con los elementos que cumplen una condición?", options: ["filter()", "map()", "forEach()"], correctAnswer: "filter()" },
+      { id: 9, question: "¿Cómo se accede a todas las claves de un objeto?", options: ["Object.keys()", "Object.entries()", "Object.getKeys()"], correctAnswer: "Object.keys()" },
+      { id: 10, question: "¿Qué método combina dos arrays en uno solo?", options: ["concat()", "join()", "merge()"], correctAnswer: "concat()" },
     ]
   },
   {

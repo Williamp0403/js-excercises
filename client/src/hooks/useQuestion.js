@@ -35,7 +35,6 @@ export function UseQuestion () {
       return toast.error('Respuesta incorrecta.', { duration: 2000 })
     }
     
-    
     try {
       const requestData = {
         level: level,
@@ -44,7 +43,8 @@ export function UseQuestion () {
       const response = await saveResponseRequest(requestData)
       setResponses((prevResponses) => {
         const newResponses = [...prevResponses, response.data.response];
-        if (newResponses.length === 10) {
+        const responsesLevel = newResponses.filter(response => response.level === level)
+        if (responsesLevel.length === 10) {
           updateLevel();
         }
         return newResponses;
