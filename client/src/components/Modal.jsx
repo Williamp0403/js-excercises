@@ -8,8 +8,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Level } from './Level';
 import { Link } from 'react-router-dom';
-import { IconButton, Tooltip } from '@mui/material';
+import { Gauge } from '@mui/x-charts/Gauge';
+import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
+import { IconButton, ListItemIcon, MenuItem, Tooltip } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
+import { useResponse } from '../context/ResponsesContext.jsx';
 
 export function ModalLevel ({ data }) {
   const [open, setOpen] = React.useState(false);
@@ -134,6 +137,75 @@ export function ModalCompletedLevel () {
               Continuar
             </button>
         </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
+}
+
+export function ModalProgress () {
+  const [open, setOpen] = React.useState(false);
+  const { user } = useAuth()
+  const { responses } = useResponse()
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const totalQuestions = 70; // Suponiendo que hay 10 preguntas
+  const progressValue = (responses.length / totalQuestions) * 100
+  const CompletedExercises = responses.length
+  const Completedlevel = user.level - 1
+
+  return (
+    <React.Fragment>
+      <MenuItem onClick={(event) => {
+          event.stopPropagation(); // Evita que el menú principal se cierre al abrir el modal
+          handleClickOpen();
+        }}>
+        <ListItemIcon>
+          <AssessmentOutlinedIcon />
+        </ListItemIcon>
+        Progreso
+      </MenuItem>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        fullWidth
+        maxWidth='xs'
+      >
+        <DialogTitle sx={{ fontWeight: 'bold' }} id="alert-dialog-title">
+          Progreso
+        </DialogTitle>
+        <DialogContent className='space-y-8'>
+          <div>
+            <Gauge
+              value={Math.round(progressValue)}
+              startAngle={0}
+              endAngle={360}
+              innerRadius="80%"
+              outerRadius="100%"
+              text={`${Math.round(progressValue)}%`}
+              sx={{ mx: "auto", fontWeight: 'bold' }} // Centrar el gráfico
+            />
+            <p className="text-center font-bold mt-1">Progreso Total</p>
+          </div>
+          <div className='flex items-center justify-around'>
+            <div className='flex flex-col items-center'>
+              <span className='font-bold text-lg sm:text-xl text-green-600'>{Completedlevel + ' de 7'}</span>
+              <h5 className='font-medium text-xs sm:text-sm'>Niveles Completados</h5>
+            </div>
+            <div className='flex flex-col items-center'>
+              <span className='font-bold text-lg sm:text-xl text-sky-600'>{CompletedExercises + ' de ' + totalQuestions}</span>
+              <h5 className='font-medium text-xs sm:text-sm'>Ejercicios Completados</h5>
+            </div>
+          </div>
+        </DialogContent>
       </Dialog>
     </React.Fragment>
   );

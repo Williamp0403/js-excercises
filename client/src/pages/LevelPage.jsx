@@ -5,15 +5,15 @@ import { useParams, Navigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { levels } from '../const/levels'
 import { ProgressBar } from '../components/ProgressBar'
-import { UseQuestion } from '../hooks/useQuestion'
 import { RadioButtonsGroup } from '../components/RadioGroup'
 import { Loading } from '../components/Loading'
 import { ModalCompletedLevel } from '../components/Modal'
+import { useResponse } from '../context/ResponsesContext.jsx'
 
 export function LevelPage () {
   const { levelId } = useParams();
   const { user } = useAuth();
-  const { getResponses, responses, select, setSelect, loading, verifyResponse } = UseQuestion();
+  const { getResponses, responses, select, setSelect, loading, verifyResponse } = useResponse();
   const { handleSubmit, formState: { isSubmitting } } = useForm();
 
   useEffect(() => {
@@ -26,7 +26,9 @@ export function LevelPage () {
   const responsesLevel = responses.filter(response => response.level === currentLevelId);
   const dataLevel = levels.find(data => data.level === currentLevelId);
 
-  if (currentLevelId > user.level) return <h1>No tienes el nivel necesario para jugar este nivel</h1>;
+  if (currentLevelId > user.level) return (
+    <h1 className='mx-auto font-bold text-lg'>No tienes el nivel necesario para jugar este nivel.</h1>
+  )
   if (currentLevelId < user.level) return <Navigate to='/game'/>;
   if (responsesLevel.length === 10) return <ModalCompletedLevel />;
   

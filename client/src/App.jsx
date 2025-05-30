@@ -9,30 +9,33 @@ import { PublicRoutes } from './PublicRoutes'
 import { PrivateRoutes } from './PrivateRoutes'
 import { GamePage } from './pages/GamePage'
 import { LevelPage } from './pages/LevelPage'
+import { ResponseProvider } from './context/ResponsesContext'
 
 function App() {
 
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Toaster richColors/>
-          <Routes>
+      <ResponseProvider>      
+        <BrowserRouter>
+          <Toaster richColors/>
+            <Routes>
 
-            <Route element={<PublicRoutes/>}>
-              <Route path='/' element={<HomePage/>}/>
-              <Route path='/login' element={<LoginPage/>}/>
-              <Route path='/register' element={<RegisterPage/>}/>
-            </Route>
+              <Route element={<PublicRoutes/>}>
+                <Route path='/' element={<HomePage/>}/>
+                <Route path='/login' element={<LoginPage/>}/>
+                <Route path='/register' element={<RegisterPage/>}/>
+              </Route>
 
-            <Route element={<PrivateRoutes/>}>
-              <Route path='/game' element={<GamePage/>}/>
-              <Route path='/level/:levelId' element={<LevelPage/>}/>
-            </Route>
+              <Route element={<PrivateRoutes/>}>
+                <Route path='/game' element={<GamePage/>}/>
+                <Route path='/level/:levelId' element={<LevelPage/>}/>
+              </Route>
 
-            <Route path='*' element={<h1>404</h1>}/>
-            
-          </Routes>
-      </BrowserRouter>
+              <Route path='*' element={<h1>404</h1>}/>
+              
+            </Routes>
+        </BrowserRouter>
+      </ResponseProvider>
     </AuthProvider>
   )
 }

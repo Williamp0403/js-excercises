@@ -6,7 +6,7 @@ import { useState } from "react"
 import { useAuth } from "../context/AuthContext"
 import { getUserRequest, updateLevelRequest } from "../api/auth"
 
-export function UseQuestion () {
+export function UseResponse () {
   const { setUser } = useAuth()
   const [ responses, setResponses ] = useState([])
   const [ select, setSelect ] = useState(null)

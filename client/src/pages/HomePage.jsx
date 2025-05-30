@@ -1,13 +1,14 @@
 import { Fade } from "@mui/material"
 import { Link } from "react-router-dom"
-
+import HomeImg from "../assets/home.png"
+ 
 export function HomePage () {
   return (
     <Fade in={true} timeout={700}>
       <main className='container mx-auto'>
         <section className="sm:grid sm:grid-cols-2 space-y-10 overflow-hidden">
           <div className="p-8 md:p-12 lg:px-16 lg:py-15">
-            <div className="mx-auto flex flex-col items-center gap-y-5 md:gap-y-8 lg:gap-y-12 max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+            <div className="mx-auto flex flex-col items-center gap-y-10 md:gap-y-8 lg:gap-y-12 max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
               <h2 className='text-2xl font-semibold md:text-4xl md:tracking-wider lg:text-5xl'>
                 Hola, Bienvenido a <span className="text-sky-500">ExercisesJS,</span> la plataforma de desafios de <span className="text-yellow-400">JavaScript.</span>
               </h2>
@@ -16,11 +17,11 @@ export function HomePage () {
               </Link>
             </div>
           </div>
-          <div className="">
+          <div className="p-7">
             <img
-              alt=""
-              src="https://empresa.platzi.com/hubfs/Business%20landing/product-main.png"
-              className="h-56 w-full object-cover sm:h-full"
+              alt="Home"
+              src={HomeImg}
+              className="w-full max-w-[500px] h-auto object-contain sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px]"
               />
           </div>
         </section>
